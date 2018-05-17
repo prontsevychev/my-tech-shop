@@ -1,0 +1,16 @@
+# My
+db.sqlite3
+.idea
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# virtualenv
+venv/
+
+# Static and media roots
+# public/
+# !public/static/.gitkeep
+# !public/media/.gitkeep
