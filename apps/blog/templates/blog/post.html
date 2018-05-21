@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
+
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block styles %}
     {{ block.super }}
@@ -43,21 +45,21 @@
                         <div class="blog_post">
                             <div class="blog_image" style="background-image:url({% static "blog/images/blog_4.jpg" %})"></div>
                             <div class="blog_text">Etiam leo nibh, consectetur nec orci et, tempus tempus ex</div>
-                            <div class="blog_button"><a href="{% url 'blog:index' %}">Continue Reading</a></div>
+                            <div class="blog_button"><a href="{% url 'blog:index' %}">{% trans "Continue Reading" %}</a></div>
                         </div>
 
                         <!-- Blog post -->
                         <div class="blog_post">
                             <div class="blog_image" style="background-image:url({% static "blog/images/blog_5.jpg" %})"></div>
                             <div class="blog_text">Sed viverra pellentesque dictum. Aenean ligula justo, viverra in lacus porttitor</div>
-                            <div class="blog_button"><a href="{% url 'blog:index' %}">Continue Reading</a></div>
+                            <div class="blog_button"><a href="{% url 'blog:index' %}">{% trans "Continue Reading" %}</a></div>
                         </div>
 
                         <!-- Blog post -->
                         <div class="blog_post">
                             <div class="blog_image" style="background-image:url({% static "blog/images/blog_6.jpg" %})"></div>
                             <div class="blog_text">In nisl tortor, tempus nec ex vitae, bibendum rutrum mi. Integer tempus nisi</div>
-                            <div class="blog_button"><a href="{% url 'blog:index' %}">Continue Reading</a></div>
+                            <div class="blog_button"><a href="{% url 'blog:index' %}">{% trans "Continue Reading" %}</a></div>
                         </div>
 
                     </div>

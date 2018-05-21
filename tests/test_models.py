@@ -38,7 +38,7 @@ class PostModelMethodsTests(TestCase):
         )
         self.assertEqual(
             self.post_with_quote.content_with_quotes,
-            "TestTestTest" + rendered1 + "\n" +rendered2 + "TestTestTest."
+            "TestTestTest" + rendered1 + "\n" + rendered2 + "TestTestTest."
         )
         self.assertEqual(
             self.post_without_quote.content_with_quotes,

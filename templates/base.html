@@ -1,12 +1,13 @@
-{% load static %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
-    <title>{% block title %}OneTech{% endblock title %}</title>
+    <title>{% block title %}{% trans "OneTech Shop" %}{% endblock title %}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="OneTech shop project">
+    <meta name="description" content="{% trans "OneTech Shop" %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block styles %}
         <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
@@ -39,15 +40,15 @@
                     <div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
                         <div class="newsletter_title_container">
                             <div class="newsletter_icon"><img src="{% static "images/send.png" %}" alt=""></div>
-                            <div class="newsletter_title">Sign up for Newsletter</div>
-                            <div class="newsletter_text"><p>...and receive %20 coupon for first shopping.</p></div>
+                            <div class="newsletter_title">{% trans "Sign up for Newsletter" %}</div>
+                            <div class="newsletter_text"><p>{% trans "...and receive %20 coupon for first shopping." %}</p></div>
                         </div>
                         <div class="newsletter_content clearfix">
                             <form action="#" class="newsletter_form">
-                                <input type="email" class="newsletter_input" required="required" placeholder="Enter your email address">
-                                <button class="newsletter_button">Subscribe</button>
+                                <input type="email" class="newsletter_input" required="required" placeholder="{% trans "Enter your email address" %}">
+                                <button class="newsletter_button">{% trans "Subscribe" %}</button>
                             </form>
-                            <div class="newsletter_unsubscribe_link"><a href="#">unsubscribe</a></div>
+                            <div class="newsletter_unsubscribe_link"><a href="#">{% trans "unsubscribe" %}</a></div>
                         </div>
                     </div>
                 </div>

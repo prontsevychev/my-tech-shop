@@ -10,6 +10,9 @@ __pycache__/
 # virtualenv
 venv/
 
+# Translations
+*.mo
+
 # Static and media roots
 # public/
 # !public/static/.gitkeep

@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 
 <!-- Footer -->
 
@@ -11,11 +11,11 @@
                     <div class="logo_container">
                         <div class="logo"><a href="#">OneTech</a></div>
                     </div>
-                    <div class="footer_title">Got Question? Call Us 24/7</div>
+                    <div class="footer_title">{% trans "Got Question? Call Us 24/7" %}</div>
                     <div class="footer_phone">+38 068 005 3570</div>
                     <div class="footer_contact_text">
-                        <p>17 Princess Road, London</p>
-                        <p>Grester London NW18JR, UK</p>
+                        <p>{% trans "17 Princess Road, London" %}</p>
+                        <p>{% trans "Grester London NW18JR, UK" %}</p>
                     </div>
                     <div class="footer_social">
                         <ul>
@@ -31,17 +31,17 @@
 
             <div class="col-lg-2 offset-lg-2">
                 <div class="footer_column">
-                    <div class="footer_title">Find it Fast</div>
+                    <div class="footer_title">{% trans "Find it Fast" %}</div>
                     <ul class="footer_list">
-                        <li><a href="#">Computers & Laptops</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Smartphones & Tablets</a></li>
-                        <li><a href="#">TV & Audio</a></li>
+                        <li><a href="#">{% trans "Computers & Laptops" %}</a></li>
+                        <li><a href="#">{% trans "Cameras & Photos" %}</a></li>
+                        <li><a href="#">{% trans "Hardware" %}</a></li>
+                        <li><a href="#">{% trans "Smartphones & Tablets" %}</a></li>
+                        <li><a href="#">{% trans "TV & Audio" %}</a></li>
                     </ul>
-                    <div class="footer_subtitle">Gadgets</div>
+                    <div class="footer_subtitle">{% trans "Gadgets" %}</div>
                     <ul class="footer_list">
-                        <li><a href="#">Car Electronics</a></li>
+                        <li><a href="#">{% trans "Car Electronics" %}</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,26 +49,26 @@
             <div class="col-lg-2">
                 <div class="footer_column">
                     <ul class="footer_list footer_list_2">
-                        <li><a href="#">Video Games & Consoles</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Computers & Laptops</a></li>
+                        <li><a href="#">{% trans "Video Games & Consoles" %}</a></li>
+                        <li><a href="#">{% trans "Accessories" %}</a></li>
+                        <li><a href="#">{% trans "Cameras & Photos" %}</a></li>
+                        <li><a href="#">{% trans "Hardware" %}</a></li>
+                        <li><a href="#">{% trans "Computers & Laptops" %}</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="col-lg-2">
                 <div class="footer_column">
-                    <div class="footer_title">Customer Care</div>
+                    <div class="footer_title">{% trans "Customer Care" %}</div>
                     <ul class="footer_list">
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Order Tracking</a></li>
-                        <li><a href="#">Wish List</a></li>
-                        <li><a href="#">Customer Services</a></li>
-                        <li><a href="#">Returns / Exchange</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Product Support</a></li>
+                        <li><a href="#">{% trans "My Account" %}</a></li>
+                        <li><a href="#">{% trans "Order Tracking" %}</a></li>
+                        <li><a href="#">{% trans "Wishlist" %}</a></li>
+                        <li><a href="#">{% trans "Customer Services" %}</a></li>
+                        <li><a href="#">{% trans "Returns / Exchange" %}</a></li>
+                        <li><a href="#">{% trans "FAQs" %}</a></li>
+                        <li><a href="#">{% trans "Product Support" %}</a></li>
                     </ul>
                 </div>
             </div>
@@ -83,10 +83,10 @@
     <div class="container">
         <div class="row">
             <div class="col">
+
                 <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
-                    <div class="copyright_content">Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script>
-                        All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                     <div class="logos ml-sm-auto">
