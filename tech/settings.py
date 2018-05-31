@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from django.utils.translation import gettext_lazy as _
 
+from apps.core import constance
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,10 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'constance',
+    'constance.backends.database',
     'rosetta',
+    'phonenumber_field',
     'apps.core',
     'apps.shop',
     'apps.blog',
+    'apps.contact',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +71,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'constance.context_processors.config',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -141,3 +148,28 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # Rosetta settings
 
 ROSETTA_MESSAGES_PER_PAGE = 50
+
+# Send email
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.mailgun.org'
+
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = 'postmaster@mg.tech-shop.ga'
+
+EMAIL_HOST_PASSWORD = '29bf4dc411c13ca7a65475e201378c40-7efe8d73-3ba25845'
+
+# Constance settings
+
+CONSTANCE_ADDITIONAL_FIELDS = constance.ADDITIONAL_FIELDS
+
+CONSTANCE_CONFIG = constance.CONFIG
+
+CONSTANCE_CONFIG_FIELDSETS = {
+    'Contact': ('phone', 'address', 'email'),
+    'Map coordinates': ('latitude', 'longitude'),
+}
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
