@@ -22,16 +22,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="single_post_title">{{ post.title }}</div>
                     <div class="single_post_text">
-                        {% for text, quote in text_with_quotes %}
-                            <p>{{ text }}</p>
-
-                            <div class="single_post_quote text-center">
-                                <div class="quote_image"><img src="{% static "blog/images/quote.png" %}" alt=""></div>
-                                <div class="quote_text">{{ quote.text }}</div>
-                                <div class="quote_name">{{ quote.author }}</div>
-                            </div>
-                        {% endfor %}
-                        <p>{{ text_last }}</p>
+                        <p>{{ post.text_with_quotes|safe }}</p>
                     </div>
                 </div>
             </div>
@@ -50,21 +41,21 @@
                         <div class="blog_post">
                             <div class="blog_image" style="background-image:url({% static "blog/images/blog_4.jpg" %})"></div>
                             <div class="blog_text">Etiam leo nibh, consectetur nec orci et, tempus tempus ex</div>
-                            <div class="blog_button"><a href="{% url 'blog' %}">Continue Reading</a></div>
+                            <div class="blog_button"><a href="{% url 'blog:blog' %}">Continue Reading</a></div>
                         </div>
 
                         <!-- Blog post -->
                         <div class="blog_post">
                             <div class="blog_image" style="background-image:url({% static "blog/images/blog_5.jpg" %})"></div>
                             <div class="blog_text">Sed viverra pellentesque dictum. Aenean ligula justo, viverra in lacus porttitor</div>
-                            <div class="blog_button"><a href="{% url 'blog' %}">Continue Reading</a></div>
+                            <div class="blog_button"><a href="{% url 'blog:blog' %}">Continue Reading</a></div>
                         </div>
 
                         <!-- Blog post -->
                         <div class="blog_post">
                             <div class="blog_image" style="background-image:url({% static "blog/images/blog_6.jpg" %})"></div>
                             <div class="blog_text">In nisl tortor, tempus nec ex vitae, bibendum rutrum mi. Integer tempus nisi</div>
-                            <div class="blog_button"><a href="{% url 'blog' %}">Continue Reading</a></div>
+                            <div class="blog_button"><a href="{% url 'blog:blog' %}">Continue Reading</a></div>
                         </div>
 
                     </div>
