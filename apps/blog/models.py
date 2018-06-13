@@ -1,29 +1,32 @@
-from django.db import models
 import re
+from urllib.parse import urljoin
+from django.db import models
+from django.conf import settings
+from django.template.loader import render_to_string
 
 
 class Post(models.Model):
     title = models.CharField("Заголовок", max_length=200)
-    text = models.TextField("Текст")
+    content = models.TextField("Содержание")
     slug = models.SlugField("Url-метка", max_length=100, unique=True)
 
     @property
-    def text_with_quotes(self):
-        quote_re = re.compile(r'<quote>\"(?P<quote>.+)\"\((?P<author>.+)\)</quote>')
-        match = quote_re.search(self.text)
-        if match:
-            quote_dict = match.groupdict()
-            quote_text = f"""</p>
-                        <div class="single_post_quote text-center">
-                            <div class="quote_image"><img src="/static/blog/images/quote.png" alt=""></div>
-                            <div class="quote_text">{quote_dict['quote']}</div>
-                            <div class="quote_name">{quote_dict['author']}</div>
-                        </div>
-                        <p>"""
-            text_with_quotes = quote_re.sub(quote_text, self.text)
-        else:
-            text_with_quotes = self.text
-        return text_with_quotes
+    def content_with_quotes(self):
+        quote_img_url = urljoin(settings.STATIC_URL, "blog/images/quote.png")
+        quote_re = re.compile(r'\"(?P<quote>.+)\" \((?P<author>.+)\)\.')
+        new_content = self.content
+        for match in quote_re.finditer(self.content):
+            if match:
+                quote_dict = match.groupdict()
+                quote_text = render_to_string(
+                    'blog/quote.html',
+                    {
+                        'quote_img_url': quote_img_url,
+                        'quote_dict': quote_dict
+                    }
+                )
+                new_content = new_content.replace(match.group(0), quote_text)
+        return new_content
 
     def __str__(self):
         return self.title
