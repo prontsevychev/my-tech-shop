@@ -1,5 +1,12 @@
-from django.shortcuts import render
+# from django.shortcuts import render
+#
+#
+# def index(request):
+#     return render(request, 'shop/index.html', {})
+
+from django.views.generic import TemplateView
 
 
-def index(request):
-    return render(request, 'shop/index.html', {})
+class ShopIndexView(TemplateView):
+    """Trying CBV"""
+    template_name = 'shop/index.html'

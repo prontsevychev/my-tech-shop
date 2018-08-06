@@ -1,5 +1,10 @@
 from django.contrib import admin
+from modeltranslation.admin import TabbedTranslationAdmin
 from . import models
 
 
-admin.site.register(models.Post)
+class PostAdmin(TabbedTranslationAdmin):
+    pass
+
+
+admin.site.register(models.Post, PostAdmin)

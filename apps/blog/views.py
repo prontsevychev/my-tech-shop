@@ -1,11 +1,20 @@
-from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404
+
 from .models import Post
 
 
-def index(request):
-    return render(request, 'blog/index.html', {})
+class BlogIndexView(ListView):
+    model = Post
+    template_name = 'blog/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['index_post'] = get_object_or_404(Post, slug="vivamus_sed_nunc")
+        return context
 
 
-def post(request, post_slug):
-    post = get_object_or_404(Post, slug=post_slug)
-    return render(request, 'blog/post.html', {'post': post})
+class BlogPostView(DetailView):
+    model = Post
+    template_name = 'blog/post.html'
+    slug_url_kwarg = 'post_slug'

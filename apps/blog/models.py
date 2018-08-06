@@ -3,12 +3,13 @@ from urllib.parse import urljoin
 from django.db import models
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.utils.translation import gettext_lazy as _
 
 
 class Post(models.Model):
-    title = models.CharField("Заголовок", max_length=200)
-    content = models.TextField("Содержание")
-    slug = models.SlugField("Url-метка", max_length=100, unique=True)
+    title = models.CharField(_("Title"), max_length=200)
+    content = models.TextField(_("Content"))
+    slug = models.SlugField(_("Url-label"), max_length=100, unique=True)
 
     @property
     def content_with_quotes(self):
@@ -32,5 +33,5 @@ class Post(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "Статья"
-        verbose_name_plural = "Статьи"
+        verbose_name = _("Post")
+        verbose_name_plural = _("Posts")

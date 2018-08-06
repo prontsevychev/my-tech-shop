@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.utils.translation import gettext_lazy as _
+from django.conf.urls.i18n import i18n_patterns
 
-urlpatterns = [
+
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
+    path('admin/rosetta/', include('rosetta.urls')),
     path('', include(('apps.shop.urls', "shop"), namespace='shop')),
-    path('blog/', include(('apps.blog.urls', "blog"), namespace='blog')),
-]
+    path(_('blog/'), include(('apps.blog.urls', "blog"), namespace='blog')),
+    prefix_default_language=False
+)
