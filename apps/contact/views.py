@@ -21,7 +21,7 @@ class ContactView(FormView):
 
     def form_valid(self, form):
         form.save()
-        message = render_to_string('contact/message.html', {'body': form.cleaned_data,})
+        message = render_to_string('contact/message.html', {'body': form.cleaned_data, })
         send_mail(
             _("Message from Contact-page"),
             message,

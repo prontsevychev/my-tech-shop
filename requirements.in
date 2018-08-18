@@ -1,0 +1,13 @@
+django>=2.1,<3.0
+django-anymail==4.2
+django-constance
+django-debug-toolbar
+django-environ
+django-modeltranslation==0.13b1
+django-phonenumber-field
+django-rosetta
+django-widget-tweaks
+ipdb
+ipython
+pip-tools
+psycopg2
