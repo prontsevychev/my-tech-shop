@@ -22,7 +22,7 @@ class ContactView(FormView):
         send_mail(
             _("Message from Contact-page"),
             message,
-            'postmaster@mg.tech-shop.ga',
-            ['tech-shop@ukr.net']
+            None,
+            ['tech-shop@ukr.net'],
         )
         return super(ContactView, self).form_valid(form)

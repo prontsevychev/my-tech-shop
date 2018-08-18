@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
 from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
 from django.conf.urls.i18n import i18n_patterns
@@ -27,3 +28,7 @@ urlpatterns = i18n_patterns(
     path(_('contact/'), include(('apps.contact.urls', "contact"), namespace='contact')),
     prefix_default_language=False
 )
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls)),]
