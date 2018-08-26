@@ -1,0 +1,19 @@
+version: '3.7'
+
+volumes:
+  local_postgres_data: {}
+
+services:
+  django:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      - postgres
+    volumes:
+      - .:/usr/local/code
+
+  postgres:
+    image: "postgres:10.5"
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data

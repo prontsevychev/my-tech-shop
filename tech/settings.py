@@ -164,13 +164,14 @@ CONSTANCE_CONFIG_FIELDSETS = {
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
-#Debug-toolbar
+# Debug-toolbar
 
-INTERNAL_IPS = ['127.0.0.1']
+# INTERNAL_IPS = ['127.0.0.1']
 
 DEBUG_TOOLBAR_CONFIG = {
     'DISABLE_PANELS': [
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ],
     'SHOW_TEMPLATE_CONTEXT': True,
+    'SHOW_TOOLBAR_CALLBACK': lambda request: True,  # Теперь INTERNAL_IPS не нужны!
 }
