@@ -1,5 +1,7 @@
-import environ
 from django.utils.translation import gettext_lazy as _
+
+import environ
+import raven
 
 from apps.core import constance
 
@@ -36,6 +38,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'anymail',
     'widget_tweaks',
+    'raven.contrib.django.raven_compat',
 
     'apps.core',
     'apps.shop',
@@ -141,6 +144,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (BASE_DIR('static'),)
 
+STATIC_ROOT = BASE_DIR('public/static')
+
 # Rosetta settings
 
 ROSETTA_MESSAGES_PER_PAGE = 50
@@ -182,4 +187,13 @@ DEBUG_TOOLBAR_CONFIG = {
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ],
     'SHOW_TEMPLATE_CONTEXT': True,
+}
+
+# Sentry
+
+RAVEN_CONFIG = {
+    'dsn': 'https://3192aed5ca134c34976a790d7b6ba461:d8450f554b7044319471041c223b6a22@sentry.io/1281380',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(BASE_DIR),
 }

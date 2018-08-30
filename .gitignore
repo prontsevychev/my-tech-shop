@@ -1,6 +1,8 @@
 # My
 db.sqlite3
-.idea
+.idea/
+.vagrant/
+*.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -8,7 +10,10 @@ __pycache__/
 *$py.class
 
 # virtualenv
-venv/
+.python-version
+
+# Dump-file
+dump.json
 
 # Translations
 *.mo
@@ -16,7 +21,12 @@ venv/
 # Environment
 .env
 
-# Static and media roots
-# public/
-# !public/static/.gitkeep
-# !public/media/.gitkeep
+# Media dir
+!public/media/
+public/media/*
+!public/media/.gitkeep
+
+# Static dir
+!public/static/
+public/static/*
+!public/static/.gitkeep
