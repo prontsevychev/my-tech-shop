@@ -161,6 +161,10 @@ EMAIL_HOST_USER = 'postmaster@mg.tech-shop.ga'
 
 EMAIL_HOST_PASSWORD = '29bf4dc411c13ca7a65475e201378c40-7efe8d73-3ba25845'
 
+DEFAULT_FROM_EMAIL = 'Tech Shop <noreply@mg.tech-shop.ga>'
+
+FEEDBACK_EMAILS_RECIPIENTS_LIST = ['']
+
 # Constance settings
 
 CONSTANCE_ADDITIONAL_FIELDS = constance.ADDITIONAL_FIELDS
