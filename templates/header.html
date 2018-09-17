@@ -9,13 +9,13 @@
     <div class="container">
         <div class="row">
             <div class="col d-flex flex-row">
-                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{% static "images/phone.png" %}" alt=""></div>+38 068 005 3570</div>
-                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{% static "images/mail.png" %}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{% static "images/phone.png" %}" alt=""></div>{{ config.phone }}</div>
+                <div class="top_bar_contact_item"><div class="top_bar_icon"><a href="mailto:{{ config.email }}"><img src="{% static "images/mail.png" %}" alt=""></a></div><a href="mailto:{{ config.email }}">{{ config.email }}</a></div>
                 <div class="top_bar_content ml-auto">
                     <div class="top_bar_menu">
                         <ul class="standard_dropdown top_bar_dropdown">
                             <li>
-                                <a href="#">{% trans "Language" %}<i class="fas fa-chevron-down"></i></a>
+                                <a href="{% translate_url_tag request.path "en" %}">{% trans "Language" %}<i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     {% for lang_code, lang_name in languages %}
                                         <li><a href="{% translate_url_tag request.path lang_code %}">{{ lang_name }}</a></li>
@@ -205,11 +205,11 @@
                                     <li><a href="{% url "blog:post" post_slug="vivamus_sed_nunc" %}">{% trans "Blog Post" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="regular.html">{% trans "Regular Post" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="cart.html">{% trans "Cart" %}<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="contact.html">{% trans "Contact" %}<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="{% url "contact:index" %}">{% trans "Contact" %}<i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </li>
                             <li><a href="{% url "blog:index" %}">{% trans "Blog" %}<i class="fas fa-chevron-down"></i></a></li>
-                            <li><a href="contact.html">{% trans "Contact" %}<i class="fas fa-chevron-down"></i></a></li>
+                            <li><a href="{% url "contact:index" %}">{% trans "Contact" %}<i class="fas fa-chevron-down"></i></a></li>
                         </ul>
                     </div>
 
@@ -241,7 +241,7 @@
 
                     <div class="page_menu_search">
                         <form action="#">
-                            <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
+                            <input type="search" required="required" class="page_menu_search_input" placeholder="{% trans "Search for products..." %}">
                         </form>
                     </div>
                     <ul class="page_menu_nav">
@@ -301,12 +301,12 @@
                             </ul>
                         </li>
                         <li class="page_menu_item"><a href="{% url "blog:index" %}">{% trans "Blog" %}<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item"><a href="contact.html">{% trans "Contact" %}<i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item"><a href="{% url "contact:index" %}">{% trans "Contact" %}<i class="fa fa-angle-down"></i></a></li>
                     </ul>
 
                     <div class="menu_contact">
-                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{% static "images/phone_white.png" %}" alt=""></div>+38 068 005 3570</div>
-                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{% static "images/mail_white.png" %}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{% static "images/phone_white.png" %}" alt=""></div>{{ config.phone }}</div>
+                        <div class="menu_contact_item"><div class="menu_contact_icon"><a href="mailto:{{ config.email }}"><img src="{% static "images/mail_white.png" %}" alt=""></a></div><a href="mailto:{{ config.email }}">{{ config.email }}</a></div>
                     </div>
                 </div>
             </div>

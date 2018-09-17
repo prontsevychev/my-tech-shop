@@ -1,9 +1,8 @@
 from django.urls import path
 from django.utils.translation import gettext_lazy as _
 
-from .views import HomeView
-
+from .views import ContactView
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='index')
+    path('', ContactView.as_view(), name='index'),
 ]

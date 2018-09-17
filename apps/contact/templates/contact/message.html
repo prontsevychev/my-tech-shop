@@ -1,0 +1,7 @@
+{% load i18n %}
+{% trans "Name" %} -- {{ body.name }}
+{% trans "Email" %} -- {{ body.email }}
+{% if body.phone %}{% trans "Phone" %} -- {{ body.phone }}{% endif %}
+
+{% trans "Message" %}:
+{{ body.message }}

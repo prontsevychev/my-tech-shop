@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.conf import settings
 from django.template.loader import render_to_string
+
 from apps.blog.models import Post
 
 

@@ -24,5 +24,6 @@ urlpatterns = i18n_patterns(
     path('admin/rosetta/', include('rosetta.urls')),
     path('', include(('apps.shop.urls', "shop"), namespace='shop')),
     path(_('blog/'), include(('apps.blog.urls', "blog"), namespace='blog')),
+    path(_('contact/'), include(('apps.contact.urls', "contact"), namespace='contact')),
     prefix_default_language=False
 )
