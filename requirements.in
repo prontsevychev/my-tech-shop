@@ -13,3 +13,4 @@ ipython
 pip-tools
 psycopg2
 raven
+gunicorn

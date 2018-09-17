@@ -1,0 +1,17 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=vagrant
+Group=www-data
+WorkingDirectory=/vagrant
+ExecStart=/home/vagrant/.pyenv/versions/TS_env/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          tech.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

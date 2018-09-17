@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become_user: root
+  become: yes
+  gather_facts: yes
+  tags: ['setup', 'deploy']
+  roles:
+    - { role: base, task: setup }
+    - { role: pyenv, task: setup }
+    - { role: postgresql, task: create }
+    - { role: django, task: setup }
+    - { role: systemd, task: setup }
+    - { role: nginx, task: create }

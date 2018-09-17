@@ -1,0 +1,18 @@
+- name: Copy nginx conf
+  copy:
+    src: ./configs/nginx/tech-shop
+    dest: /etc/nginx/sites-available/tech-shop
+    owner: root
+    group: root
+
+- name: Create link for nginx config
+  file:
+    src: /etc/nginx/sites-available/tech-shop
+    dest: /etc/nginx/sites-enabled/tech-shop
+    state: link
+    force: yes
+
+- name: Restart nginx
+  systemd:
+    name: nginx
+    state: restarted

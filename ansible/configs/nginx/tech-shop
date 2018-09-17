@@ -1,0 +1,15 @@
+server {
+    listen 80;
+    server_name 127.0.0.1 *.ngrok.io;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt { access_log off; log_not_found off; }
+    location /static/ {
+        root /vagrant/public;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+}

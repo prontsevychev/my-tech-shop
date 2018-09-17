@@ -1,0 +1,9 @@
+- name: Create postgresql user vagrant
+  postgresql_user: name="vagrant"
+  become: True
+  become_user: postgres
+
+- name: Create postgresql db
+  postgresql_db: name="tech_db" owner="vagrant" encoding='UTF-8'
+  become: True
+  become_user: postgres

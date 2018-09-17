@@ -1,0 +1,12 @@
+- name: Copy gunicorn confs
+  copy:
+    src: ./configs/gunicorn/
+    dest: /etc/systemd/system/
+    owner: root
+    group: root
+
+- name: Start and enable the Gunicorn socket
+  systemd:
+    name: gunicorn.socket
+    state: started
+    enabled: yes

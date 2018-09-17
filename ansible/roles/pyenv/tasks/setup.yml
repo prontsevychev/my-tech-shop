@@ -1,0 +1,19 @@
+- name: Clone pyenv git repo
+  git: repo="https://github.com/pyenv/pyenv.git" dest="/home/vagrant/.pyenv" force=yes
+  become: True
+  become_user: vagrant
+
+- name: Install python 3.6.6
+  shell: "/home/vagrant/.pyenv/bin/pyenv install 3.6.6"
+  become: True
+  become_user: vagrant
+
+- name: Clone pyenv-virtualenv git repo
+  git: repo="https://github.com/pyenv/pyenv-virtualenv.git" dest="/home/vagrant/.pyenv/plugins/pyenv-virtualenv" force=yes
+  become: True
+  become_user: vagrant
+
+- name: Install virtual environment TS_env
+  shell: "/home/vagrant/.pyenv/bin/pyenv virtualenv 3.6.6 TS_env"
+  become: True
+  become_user: vagrant
