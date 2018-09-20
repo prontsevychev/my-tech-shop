@@ -4,6 +4,7 @@ django-constance
 django-debug-toolbar
 django-environ
 django-modeltranslation==0.13b1
+django-picklefield
 django-phonenumber-field
 django-rosetta
 django-widget-tweaks
@@ -11,3 +12,4 @@ ipdb
 ipython
 pip-tools
 psycopg2
+raven
