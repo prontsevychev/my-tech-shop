@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name 127.0.0.1 *.ngrok.io;
+    server_name {{ nginx_server_name }} {{ ngrok_nginx_server_name }};
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location = /robots.txt { access_log off; log_not_found off; }

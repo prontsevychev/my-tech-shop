@@ -1,14 +1,14 @@
 - name: Copy nginx conf
-  copy:
-    src: ./configs/nginx/tech-shop
-    dest: /etc/nginx/sites-available/tech-shop
+  template:
+    src: nginx_conf.j2
+    dest: /etc/nginx/sites-available/{{ project_name }}
     owner: root
     group: root
 
 - name: Create link for nginx config
   file:
-    src: /etc/nginx/sites-available/tech-shop
-    dest: /etc/nginx/sites-enabled/tech-shop
+    src: /etc/nginx/sites-available/{{ project_name }}
+    dest: /etc/nginx/sites-enabled/{{ project_name }}
     state: link
     force: yes
 

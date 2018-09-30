@@ -1,36 +1,36 @@
 - name: Install pip packages
   pip:
-    requirements: "/vagrant/requirements.txt"
-    virtualenv: "/home/vagrant/.pyenv/versions/TS_env"
-  become_user: vagrant
+    requirements: "{{ project_directory }}/requirements.txt"
+    virtualenv: "{{ virtualenv_path }}"
+  become_user: "{{ user }}"
   become: yes
 
 - name: Make manage.py executable
   file:
-    path: "/vagrant/manage.py"
+    path: "{{ project_directory }}/manage.py"
     mode: 0777
 
 - name: Django migrate
   django_manage:
     command: migrate
-    app_path: "/vagrant"
-    virtualenv: "/home/vagrant/.pyenv/versions/TS_env"
-  become_user: vagrant
+    app_path: "{{ project_directory }}"
+    virtualenv: "{{ virtualenv_path }}"
+  become_user: "{{ user }}"
   become: yes
 
 - name: Django loaddata
   django_manage:
     command: loaddata
-    app_path: "/vagrant"
-    virtualenv: "/home/vagrant/.pyenv/versions/TS_env"
-    fixtures: "dump.json"
-  become_user: vagrant
+    app_path: "{{ project_directory }}"
+    virtualenv: "{{ virtualenv_path }}"
+    fixtures: "{{ db_dump_file }}"
+  become_user: "{{ user }}"
   become: yes
 
 - name: Django collectstatic
   django_manage:
     command: collectstatic
-    app_path: "/vagrant"
-    virtualenv: "/home/vagrant/.pyenv/versions/TS_env"
-  become_user: vagrant
+    app_path: "{{ project_directory }}"
+    virtualenv: "{{ virtualenv_path }}"
+  become_user: "{{ user }}"
   become: yes

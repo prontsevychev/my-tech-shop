@@ -1,7 +1,14 @@
-- name: Copy gunicorn confs
-  copy:
-    src: ./configs/gunicorn/
-    dest: /etc/systemd/system/
+- name: Copy gunicorn.socket
+  template:
+    src: gunicorn.socket.j2
+    dest: /etc/systemd/system/gunicorn.socket
+    owner: root
+    group: root
+
+- name: Copy gunicorn.service
+  template:
+    src: gunicorn.service.j2
+    dest: /etc/systemd/system/gunicorn.service
     owner: root
     group: root
 

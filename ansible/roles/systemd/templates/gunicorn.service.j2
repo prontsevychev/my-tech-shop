@@ -4,14 +4,14 @@ Requires=gunicorn.socket
 After=network.target
 
 [Service]
-User=vagrant
+User={{ user }}
 Group=www-data
-WorkingDirectory=/vagrant
-ExecStart=/home/vagrant/.pyenv/versions/TS_env/bin/gunicorn \
+WorkingDirectory={{ project_directory }}
+ExecStart={{ virtualenv_path }}/bin/gunicorn \
           --access-logfile - \
-          --workers 3 \
+          --workers {{ number_of_gunicorn_workers }} \
           --bind unix:/run/gunicorn.sock \
-          tech.wsgi:application
+          {{ wsgi_module }}:application
 
 [Install]
 WantedBy=multi-user.target

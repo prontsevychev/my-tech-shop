@@ -1,0 +1,19 @@
+
+user: "vagrant"
+project_name: "tech-shop"
+home_directory: "/home/{{ user }}"
+project_directory: "/vagrant"
+
+pyenv_directory: "{{ home_directory }}/.pyenv"
+python_version: "3.6.6"
+virtual_environment_name: "TS_env"
+virtualenv_path: "{{ pyenv_directory }}/versions/{{ virtual_environment_name }}"
+
+postgresql_db_name: "tech_db"
+db_dump_file: "dump.json"
+
+number_of_gunicorn_workers: "3"
+wsgi_module: "tech.wsgi"
+
+nginx_server_name: "127.0.0.1"
+ngrok_nginx_server_name: "*.ngrok.io"
