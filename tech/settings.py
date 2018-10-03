@@ -78,6 +78,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -145,6 +146,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (BASE_DIR('static'),)
 
 STATIC_ROOT = BASE_DIR('public/static')
+
+# Media files
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR('public/media')
+
 
 # Rosetta settings
 
