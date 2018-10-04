@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/styles/product_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/styles/product_responsive.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <!-- Single Product -->
+
+    <div class="single_product">
+        <div class="container">
+            <div class="row">
+
+                <!-- Images -->
+                <div class="col-lg-2 order-lg-1 order-2">
+                    <ul class="image_list">
+                        {% for i in product.images.all %}
+                            <li data-image="{{ i.image.url }}"><img src="{{ i.image.url }}" alt=""></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Selected Image -->
+                <div class="col-lg-5 order-lg-2 order-1">
+                    <div class="image_selected"><img src="{{ product.images.first.image.url }}" alt=""></div>
+                </div>
+
+                <!-- Description -->
+                <div class="col-lg-5 order-3">
+                    <div class="product_description">
+                        <div class="product_category">{% trans product.get_category_display %}</div>
+                        <div class="product_name">{{ product.name }}</div>
+                        <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                        <div class="product_text"><p>{{ product.description }}</p></div>
+                        <div class="order_info d-flex flex-row">
+                            <form action="#">
+                                <div class="clearfix" style="z-index: 1000;">
+
+                                    <!-- Product Quantity -->
+                                    <div class="product_quantity clearfix">
+                                        <span>{% trans "Quantity" %}: </span>
+                                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                        <div class="quantity_buttons">
+                                            <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
+                                            <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product Color -->
+                                    <ul class="product_color">
+                                        <li>
+                                            <span>{% trans "Color" %}: </span>
+                                            <div class="color_mark_container"><div id="selected_color" class="color_mark" style="background: {{ product.color }};"></div></div>
+                                            <div class="color_dropdown_button"><i class="fas fa-chevron-down"></i></div>
+
+                                            <ul class="color_list">
+                                                {% for alt_product in alternative_products %}
+                                                    <li><a href="{% url "shop:product" product_slug=alt_product.slug %}"><div class="color_mark" style="background: {{ alt_product.color }};"></div></a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                                <div class="product_price">${{ product.price }}</div>
+                                <div class="button_container">
+                                    <button type="button" class="button cart_button">{% trans "Add to Cart" %}</button>
+                                    <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Recently Viewed -->
+    {% include "shop/viewed.html" %}
+
+    <!-- Brands -->
+    {% include "shop/brands.html" %}
+
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static "plugins/OwlCarousel2-2.2.1/owl.carousel.js" %}"></script>
+    <script src="{% static "shop/js/product_custom.js" %}"></script>
+{% endblock scripts %}

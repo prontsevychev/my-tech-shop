@@ -36,7 +36,7 @@ class Product(models.Model):
     color = models.CharField("Product color", max_length=7, choices=PRODUCT_COLORS)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}_{self.get_color_display()}"
 
     class Meta:
         verbose_name = "Product"

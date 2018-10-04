@@ -199,8 +199,8 @@
                             <li class="hassubs">
                                 <a href="#">{% trans "Pages" %}<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="shop:index">{% trans "Shop" %}<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="product.html">{% trans "Product" %}<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="{% url "shop:index" %}">{% trans "Shop" %}<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="{% url "shop:product" product_slug="MacBook_Air_13_gray" %}">{% trans "Product" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="{% url "blog:index" %}">{% trans "Blog" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="{% url "blog:post" post_slug="vivamus_sed_nunc" %}">{% trans "Blog Post" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="regular.html">{% trans "Regular Post" %}<i class="fas fa-chevron-down"></i></a></li>
