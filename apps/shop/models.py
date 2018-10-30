@@ -52,8 +52,8 @@ class Cart(models.Model):
 
     products = models.ManyToManyField(Product, through='CartLine', verbose_name='Products', blank=True)
 
-    def get_total_cost(self):
-        return sum(line.item.price * line.quantity for line in self.cartlines.all())
+    def get_total_cart_cost(self):
+        return sum(line.product.price * line.quantity for line in self.cartlines.all())
 
     def __str__(self):
         return "Cart ID # " + str(self.id)
@@ -68,6 +68,9 @@ class CartLine(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='cartlines')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Product')
     quantity = models.PositiveIntegerField("Quantity", default=1)
+
+    def get_total_cartline_cost(self):
+        return self.product.price * self.quantity
 
     def __str__(self):
         return "CartLine ID # " + str(self.id)

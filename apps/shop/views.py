@@ -22,7 +22,7 @@ class ProductView(FormMixin, DetailView):
         return context
 
     def get_success_url(self):
-        return reverse('shop:index')
+        return reverse('shop:cart', kwargs={"cart_id": "1"})
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -37,3 +37,9 @@ class ProductView(FormMixin, DetailView):
         instance.product = self.get_object()
         instance.save()
         return super().form_valid(form)
+
+
+class CartView(DetailView):
+    model = Cart
+    template_name = "shop/cart.html"
+    pk_url_kwarg = "cart_id"

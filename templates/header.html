@@ -204,7 +204,7 @@
                                     <li><a href="{% url "blog:index" %}">{% trans "Blog" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="{% url "blog:post" post_slug="vivamus_sed_nunc" %}">{% trans "Blog Post" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="regular.html">{% trans "Regular Post" %}<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="cart.html">{% trans "Cart" %}<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="{% url "shop:cart" cart_id=1 %}">{% trans "Cart" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="{% url "contact:index" %}">{% trans "Contact" %}<i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </li>
