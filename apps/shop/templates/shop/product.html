@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static i18n widget_tweaks %}
 
 {% block title %}{{ product.name }}{% endblock %}
 
@@ -38,13 +38,14 @@
                         <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
                         <div class="product_text"><p>{{ product.description }}</p></div>
                         <div class="order_info d-flex flex-row">
-                            <form action="#">
+                            <form method="POST">
+                                {% csrf_token %}
                                 <div class="clearfix" style="z-index: 1000;">
 
                                     <!-- Product Quantity -->
                                     <div class="product_quantity clearfix">
                                         <span>{% trans "Quantity" %}: </span>
-                                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                        {% render_field form.quantity id="quantity_input" label="" %}
                                         <div class="quantity_buttons">
                                             <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
                                             <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
@@ -70,7 +71,7 @@
 
                                 <div class="product_price">${{ product.price }}</div>
                                 <div class="button_container">
-                                    <button type="button" class="button cart_button">{% trans "Add to Cart" %}</button>
+                                    <button type="submit" class="button cart_button">{% trans "Add to Cart" %}</button>
                                     <div class="product_fav"><i class="fas fa-heart"></i></div>
                                 </div>
 

@@ -46,3 +46,31 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images', verbose_name="Product")
     image = models.ImageField("Image", upload_to='product_images/', blank=True)
+
+
+class Cart(models.Model):
+
+    products = models.ManyToManyField(Product, through='CartLine', verbose_name='Products', blank=True)
+
+    def get_total_cost(self):
+        return sum(line.item.price * line.quantity for line in self.cartlines.all())
+
+    def __str__(self):
+        return "Cart ID # " + str(self.id)
+
+    class Meta:
+        verbose_name = "Cart"
+        verbose_name_plural = "Carts"
+
+
+class CartLine(models.Model):
+
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='cartlines')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Product')
+    quantity = models.PositiveIntegerField("Quantity", default=1)
+
+    def __str__(self):
+        return "CartLine ID # " + str(self.id)
+
+    class Meta:
+        unique_together = (("cart", "product"),)

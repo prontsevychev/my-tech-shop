@@ -12,4 +12,14 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageInline, ]
 
 
+class CartLineInline(admin.TabularInline):
+    model = models.CartLine
+    extra = 0
+
+
+class CartAdmin(admin.ModelAdmin):
+    inlines = [CartLineInline, ]
+
+
 admin.site.register(models.Product, ProductAdmin)
+admin.site.register(models.Cart, CartAdmin)
