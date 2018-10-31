@@ -79,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'apps.shop.context_processors.cart_processor',
             ],
         },
     },

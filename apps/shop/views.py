@@ -39,7 +39,5 @@ class ProductView(FormMixin, DetailView):
         return super().form_valid(form)
 
 
-class CartView(DetailView):
-    model = Cart
+class CartView(TemplateView):
     template_name = "shop/cart.html"
-    pk_url_kwarg = "cart_id"
