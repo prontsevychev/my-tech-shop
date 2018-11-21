@@ -12,6 +12,7 @@ ipdb
 ipython
 pillow
 pip-tools
+phonenumbers
 psycopg2
 raven
 gunicorn

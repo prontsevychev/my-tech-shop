@@ -51,7 +51,6 @@
                                 {% endfor %}
                             </ul>
                         </div>
-
                         <!-- Order Total -->
                         <div class="order_total">
                             <div class="order_total_content text-md-right">
@@ -62,7 +61,7 @@
 
                         <div class="cart_buttons">
                             <a href="{% url "shop:index" %}"><button type="button" class="button cart_button_clear">{% trans "Back" %}</button></a>
-                            <button type="button" class="button cart_button_checkout">{% trans "Nice button :)" %}</button>
+                            <a href="{% url "shop:cart_pay" cart_id=cart.pk %}"><button type="button" class="button cart_button_checkout">{% trans "Сheckout" %}</button></a>
                         </div>
                     </div>
                 </div>

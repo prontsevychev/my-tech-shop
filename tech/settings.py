@@ -207,3 +207,11 @@ RAVEN_CONFIG = {
     # release based on the git info.
     'release': raven.fetch_git_sha(BASE_DIR),
 }
+
+# LiqPay
+
+LIQPAY_PUBLIC_KEY = env('TS_LIQPAY_PUBLIC_KEY')
+
+LIQPAY_PRIVATE_KEY = env('TS_LIQPAY_PRIVATE_KEY')
+
+LIQPAY_SANDBOX_MODE = env('TS_LIQPAY_SANDBOX_MODE', default=1)

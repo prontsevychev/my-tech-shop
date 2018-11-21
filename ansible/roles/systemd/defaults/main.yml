@@ -1,0 +1,2 @@
+number_of_gunicorn_workers: "{{ ansible_processor_vcpus * 2 + 1 | int }}"
+wsgi_module: "tech.wsgi"

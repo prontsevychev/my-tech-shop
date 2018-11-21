@@ -1,11 +1,15 @@
 server {
     listen 80;
-    server_name {{ nginx_server_name }} {{ ngrok_nginx_server_name }};
+    server_name {{ nginx_server_name }};
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location = /robots.txt { access_log off; log_not_found off; }
     location /static/ {
-        root /vagrant/public;
+        root {{ project_directory }}/public;
+    }
+
+      location /media/ {
+        root {{ project_directory }}/public;
     }
 
     location / {

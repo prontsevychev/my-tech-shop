@@ -1,4 +1,4 @@
-- name: Create postgresql user vagrant
+- name: Create postgresql user
   postgresql_user: name="{{ user }}"
   become: True
   become_user: postgres

@@ -1,0 +1,6 @@
+Thank you for buy!
+{% for product in cart.products.all %}
+    {{ product.name }}
+    {{ product.price }}
+    {{ product.color }}
+{% endfor %}
