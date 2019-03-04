@@ -78,6 +78,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+                'apps.shop.context_processors.cart_processor',
             ],
         },
     },
@@ -146,6 +148,13 @@ STATICFILES_DIRS = (BASE_DIR('static'),)
 
 STATIC_ROOT = BASE_DIR('public/static')
 
+# Media files
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR('public/media')
+
+
 # Rosetta settings
 
 ROSETTA_MESSAGES_PER_PAGE = 50
@@ -180,13 +189,14 @@ CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
 # Debug-toolbar
 
-INTERNAL_IPS = ['127.0.0.1']
+# INTERNAL_IPS = ['127.0.0.1']
 
 DEBUG_TOOLBAR_CONFIG = {
     'DISABLE_PANELS': [
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ],
     'SHOW_TEMPLATE_CONTEXT': True,
+    'SHOW_TOOLBAR_CALLBACK': lambda request: True,  # Теперь INTERNAL_IPS не нужны!
 }
 
 # Sentry
@@ -197,3 +207,11 @@ RAVEN_CONFIG = {
     # release based on the git info.
     'release': raven.fetch_git_sha(BASE_DIR),
 }
+
+# LiqPay
+
+LIQPAY_PUBLIC_KEY = env('TS_LIQPAY_PUBLIC_KEY')
+
+LIQPAY_PRIVATE_KEY = env('TS_LIQPAY_PRIVATE_KEY')
+
+LIQPAY_SANDBOX_MODE = env('TS_LIQPAY_SANDBOX_MODE', default=1)

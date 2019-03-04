@@ -1,0 +1,27 @@
+- name: Install pip packages
+  pip:
+    requirements: "{{ project_directory }}/requirements.txt"
+    virtualenv: "{{ virtualenv_path }}"
+  become_user: "{{ user }}"
+  become: yes
+
+- name: Make manage.py executable
+  file:
+    path: "{{ project_directory }}/manage.py"
+    mode: 0755
+
+- name: Django migrate
+  django_manage:
+    command: migrate
+    app_path: "{{ project_directory }}"
+    virtualenv: "{{ virtualenv_path }}"
+  become_user: "{{ user }}"
+  become: yes
+
+- name: Django collectstatic
+  django_manage:
+    command: collectstatic
+    app_path: "{{ project_directory }}"
+    virtualenv: "{{ virtualenv_path }}"
+  become_user: "{{ user }}"
+  become: yes

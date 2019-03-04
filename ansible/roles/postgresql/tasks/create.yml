@@ -1,0 +1,9 @@
+- name: Create postgresql user
+  postgresql_user: name="{{ user }}"
+  become: True
+  become_user: postgres
+
+- name: Create postgresql db
+  postgresql_db: name="{{ postgresql_db_name }}" owner="{{ user }}" encoding='UTF-8'
+  become: True
+  become_user: postgres

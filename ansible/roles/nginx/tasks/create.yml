@@ -1,0 +1,18 @@
+- name: Copy nginx conf
+  template:
+    src: nginx_conf.j2
+    dest: /etc/nginx/sites-available/{{ project_name }}
+    owner: root
+    group: root
+
+- name: Create link for nginx config
+  file:
+    src: /etc/nginx/sites-available/{{ project_name }}
+    dest: /etc/nginx/sites-enabled/{{ project_name }}
+    state: link
+    force: yes
+
+- name: Restart nginx
+  systemd:
+    name: nginx
+    state: restarted

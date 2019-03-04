@@ -1,0 +1,41 @@
+- name: Clone pyenv git repo
+  git: repo="https://github.com/pyenv/pyenv.git" dest="{{ pyenv_directory }}" force=yes
+  become: True
+  become_user: "{{ user }}"
+
+- name: Define pyenv environment variable
+  shell: echo 'export PYENV_ROOT="{{ pyenv_directory }}"' >> {{ shell_file }} && echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> {{ shell_file }}
+  become: True
+  become_user: "{{ user }}"
+
+- name: Add pyenv init to shell
+  shell: echo 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> {{ shell_file }}
+  become: True
+  become_user: "{{ user }}"
+
+- name: Install python 3.6.6
+  shell: "{{ pyenv_directory }}/bin/pyenv install {{ python_version }}"
+  become: True
+  become_user: "{{ user }}"
+
+- name: Clone pyenv-virtualenv git repo
+  git: repo="https://github.com/pyenv/pyenv-virtualenv.git" dest="{{ pyenv_directory }}/plugins/pyenv-virtualenv" force=yes
+  become: True
+  become_user: "{{ user }}"
+
+- name: Add pyenv virtualenv-init to shell
+  shell: echo 'eval "$(pyenv virtualenv-init -)"' >> {{ shell_file }}
+  become: True
+  become_user: "{{ user }}"
+
+- name: Install virtual environment TS_env
+  shell: "{{ pyenv_directory }}/bin/pyenv virtualenv {{ python_version }} {{ virtual_environment_name }}"
+  become: True
+  become_user: "{{ user }}"
+
+- name: Create .python-version
+  shell: "{{ pyenv_directory }}/bin/pyenv local {{ virtual_environment_name }}"
+  args:
+    chdir: "{{ project_directory }}/"
+  become: True
+  become_user: "{{ user }}"

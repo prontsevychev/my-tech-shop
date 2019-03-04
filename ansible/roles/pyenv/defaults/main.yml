@@ -1,0 +1,5 @@
+pyenv_directory: "{{ home_directory }}/.pyenv"
+python_version: "3.6.6"
+virtual_environment_name: "TS_DO_env"
+virtualenv_path: "{{ pyenv_directory }}/versions/{{ virtual_environment_name }}"
+shell_file: "{{ home_directory }}/.bashrc"

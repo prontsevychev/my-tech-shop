@@ -10,6 +10,9 @@ django-rosetta
 django-widget-tweaks
 ipdb
 ipython
+pillow
 pip-tools
+phonenumbers
 psycopg2
 raven
+gunicorn

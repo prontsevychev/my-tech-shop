@@ -99,11 +99,11 @@
                         <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                             <div class="cart_icon">
                                 <img src="{% static "images/cart.png" %}" alt="">
-                                <div class="cart_count"><span>10</span></div>
+                                <div class="cart_count"><span>{{ cart.cartlines.count }}</span></div>
                             </div>
                             <div class="cart_content">
-                                <div class="cart_text"><a href="#">{% trans "Cart" %}</a></div>
-                                <div class="cart_price">$85</div>
+                                <div class="cart_text"><a href="{% url "shop:cart" cart_id=cart.id %}">{% trans "Cart" %}</a></div>
+                                <div class="cart_price">${{ cart.get_total_cart_cost }}</div>
                             </div>
                         </div>
                     </div>
@@ -199,12 +199,12 @@
                             <li class="hassubs">
                                 <a href="#">{% trans "Pages" %}<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="shop:index">{% trans "Shop" %}<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="product.html">{% trans "Product" %}<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="{% url "shop:index" %}">{% trans "Shop" %}<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="{% url "shop:product" product_slug="MacBook_Air_13_gray" %}">{% trans "Product" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="{% url "blog:index" %}">{% trans "Blog" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="{% url "blog:post" post_slug="vivamus_sed_nunc" %}">{% trans "Blog Post" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="regular.html">{% trans "Regular Post" %}<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="cart.html">{% trans "Cart" %}<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="{% url "shop:cart" cart_id=cart.id %}">{% trans "Cart" %}<i class="fas fa-chevron-down"></i></a></li>
                                     <li><a href="{% url "contact:index" %}">{% trans "Contact" %}<i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </li>

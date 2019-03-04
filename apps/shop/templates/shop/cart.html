@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static i18n widget_tweaks %}
+
+{% block title %}{{ cart }}{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/styles/cart_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/styles/cart_responsive.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <!-- Cart -->
+
+    <div class="cart_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cart_container">
+                        <div class="cart_title">{% trans "Shopping Cart" %}</div>
+                        <div class="cart_items">
+                            <ul class="cart_list">
+                                {% for cartline in cart.cartlines.all %}
+                                    <li class="cart_item clearfix">
+                                        <div class="cart_item_image"><img src="{{ cartline.product.images.first.image.url }}" alt=""></div>
+                                        <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                            <div class="cart_item_name cart_info_col">
+                                                <div class="cart_item_title">{% trans "Name" %}</div>
+                                                <div class="cart_item_text">{{ cartline.product.name }}</div>
+                                            </div>
+                                            <div class="cart_item_color cart_info_col">
+                                                <div class="cart_item_title">{% trans "Color" %}</div>
+                                                <div class="cart_item_text"><span style="background-color:{{ cartline.product.color }};"></span>{{ cartline.product.get_color_display }}</div>
+                                            </div>
+                                            <div class="cart_item_quantity cart_info_col">
+                                                <div class="cart_item_title">{% trans "Quantity" %}</div>
+                                                <div class="cart_item_text">{{ cartline.quantity }}</div>
+                                            </div>
+                                            <div class="cart_item_price cart_info_col">
+                                                <div class="cart_item_title">{% trans "Price" %}</div>
+                                                <div class="cart_item_text">${{ cartline.product.price }}</div>
+                                            </div>
+                                            <div class="cart_item_total cart_info_col">
+                                                <div class="cart_item_title">{% trans "Total" %}</div>
+                                                <div class="cart_item_text">${{ cartline.get_total_cartline_cost }}</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% empty %}
+                                    <div class="cart_item_text">There are no purchases yet!</div>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!-- Order Total -->
+                        <div class="order_total">
+                            <div class="order_total_content text-md-right">
+                                <div class="order_total_title">{% trans "Order Total" %}:</div>
+                                <div class="order_total_amount">${{ cart.get_total_cart_cost }}</div>
+                            </div>
+                        </div>
+
+                        <div class="cart_buttons">
+                            <a href="{% url "shop:index" %}"><button type="button" class="button cart_button_clear">{% trans "Back" %}</button></a>
+                            <a href="{% url "shop:cart_pay" cart_id=cart.pk %}"><button type="button" class="button cart_button_checkout">{% trans "Сheckout" %}</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static "shop/js/cart_custom.js" %}"></script>
+{% endblock scripts %}

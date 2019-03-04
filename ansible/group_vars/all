@@ -1,0 +1,5 @@
+
+user: "eugene"
+project_name: "tech-shop"
+home_directory: "/home/{{ user }}"
+project_directory: "{{ home_directory }}/{{ project_name }}"
